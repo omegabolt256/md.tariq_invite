@@ -1573,20 +1573,7 @@ Directions to Nikah Venue
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8"></path></svg> </a> </div> </section> <!-- VALIMA --> <section class="event event-valima"> <svg class="event-arch-wrap" viewBox="0 0 200 300" aria-hidden="true"> <path d="M20 290 L20 130 Q20 20 100 20 Q180 20 180 130 L180 290" fill="none" stroke="#c9a35a" stroke-width="1"></path> <path d="M30 290 L30 135 Q30 30 100 30 Q170 30 170 135 L170 290" fill="none" stroke="#c9a35a" stroke-width=".5" opacity=".5"></path> </svg> <div class="event-card"> <p class="label">The Celebration</p> <div class="ornament-line"> <svg width="60" height="10" viewBox="0 0 60 10"><path d="M0 5 L50 5 M50 5 L46 1 M50 5 L46 9" stroke="#c9a35a" fill="none" stroke-width=".8"></path><circle cx="55" cy="5" r="2" fill="none" stroke="#c9a35a" stroke-width=".8"></circle></svg> </div> <h2 class="event-name">Valima</h2> <p class="event-date-line">28th September 2026 · Monday</p> <div class="countdown"> <div class="cd-row" id="cdValima" data-target="2026-09-28T19:00:00"> <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Days</span></div> <div class="cd-divider"></div> <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Hours</span></div> <div class="cd-divider"></div> <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Minutes</span></div> <div class="cd-divider"></div> <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Seconds</span></div> </div> </div> <div class="event-detail"> <p class="event-time">7 PM</p> <p class="event-venue">Prestige Lawns</p> <p class="event-address">Bauxite Road · Vaibhav Nagar · Belgaum</p> </div> <a class="dir-btn" id="dirValima" href="https://maps.google.com/?q=Prestige+Lawns+Bauxite+Road+Vaibhav+Nagar+Belgaum" target="_blank" rel="noopener">
 Directions to Valima Venue
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8"></path></svg> </a> </div> </section> <!-- CLOSING QURAN VERSE + DUAS --> <section class="closing"> <div class="container narrow"> <p class="label">A Prayer for the Couple</p> <p class="quran-text" style="margin-top:18px;">وَٱلَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</p> <p class="quran-trans">"Our Lord! Bless us with pious spouses and offspring who will be the joy of our hearts, and make us models for the righteous."</p> <p class="quran-ref" style="margin-bottom:48px;">Surah Al-Furqan · 25:74</p> <div class="ornament-line" style="margin-bottom:32px;"> <svg width="60" height="10" viewBox="0 0 60 10"><path d="M0 5 L50 5 M50 5 L46 1 M50 5 L46 9" stroke="#c9a35a" fill="none" stroke-width=".8"></path><circle cx="55" cy="5" r="2" fill="none" stroke="#c9a35a" stroke-width=".8"></circle></svg> </div> <p class="prayer">O Allah, bless this couple with the same love, loyalty, and companionship that existed between Prophet Muhammad and Khadijah.</p> <p class="prayer">O Allah, grant them the patience to navigate hardships together and make them a garment of protection for one another.</p> <p class="prayer">O Allah, protect their home from jealousy, evil eye, anger, and division.</p> <div class="ornament-line" style="margin:48px auto 32px;"> <svg width="60" height="10" viewBox="0 0 60 10"><path d="M0 5 L50 5 M50 5 L46 1 M50 5 L46 9" stroke="#c9a35a" fill="none" stroke-width=".8"></path><circle cx="55" cy="5" r="2" fill="none" stroke="#c9a35a" stroke-width=".8"></circle></svg> </div> <p class="closing-thanks">Your presence and prayers are the most precious gift we could ask for. Thank you for being part of the beginning of our forever.</p> <h3 class="closing-names">Md. Tariq Aziz &amp; Umme Rumaan</h3> <p class="hero-date" style="opacity:1;animation:none;color:var(--gold-soft);">With love &amp; gratitude</p> </div> </section> <!-- MUSIC --> <button id="musicBtn" class="music-btn" aria-label="Toggle music" title="Toggle music"> <span class="music-ring"></span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg> </button> </div> <script>
-    // === Envelope opening ===
-    const opening = document.getElementById('opening');
-    const envelope = document.getElementById('envelope');
-    const envSeal = document.getElementById('envSeal');
-    const envFront = document.querySelector('.env-front');
-    function openEnvelope(){
-      if(!opening || opening.classList.contains('opened')) return;
-      opening.classList.add('opened');
-      if(window.playWeddingMusicNow) window.playWeddingMusicNow();
-    }
-    envSeal && envSeal.addEventListener('click', openEnvelope);
-    envFront && envFront.addEventListener('click', openEnvelope);
-    envelope && envelope.addEventListener('click', (e)=>{ if(e.target===envelope) openEnvelope(); });
-
+    // === Envelope opening is controlled by #opening-to-hero-controller ===
     // === Countdowns ===
     function pad(n){ return String(n).padStart(2,'0'); }
     function buildCountdown(el){
@@ -5228,24 +5215,34 @@ document.addEventListener("DOMContentLoaded", function(){
   const seal = document.getElementById("envSeal");
   if(!opening || !seal) return;
 
-  let done = false;
+  let opened = false;
 
-  seal.addEventListener("click", function(){
-    if(done) return;
-    done = true;
+  function proceedFromEnvelope(e){
+    if(e){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if(opened) return;
+    opened = true;
 
-    // Let the existing envelope + card animation play first.
+    // Start the existing envelope/card animation.
+    opening.classList.add("opened");
+
+    // After the card has risen, smoothly clear the opening layer.
     setTimeout(function(){
       opening.classList.add("transition-out");
 
-      // Once the visual transition is finished, remove the overlay from
-      // document flow completely. The hero is immediately underneath it.
+      // Remove the opening layer completely so the hero is immediately
+      // accessible and scrollable underneath it.
       setTimeout(function(){
         opening.style.display = "none";
         opening.setAttribute("aria-hidden","true");
       }, 950);
     }, 1650);
-  }, {once:true});
+  }
+
+  seal.addEventListener("click", proceedFromEnvelope, {once:true});
+  seal.addEventListener("touchend", proceedFromEnvelope, {once:true, passive:false});
 });
 </script>
 
